@@ -1,4 +1,4 @@
-ARG VERSION=latest
+ARG VERSION=22.04.2
 FROM public.ecr.aws/seqera-labs/nextflow:${VERSION} AS build
 
 # The upstream nextflow containers are based on alpine
@@ -8,6 +8,7 @@ COPY --from=build /usr/local/bin/nextflow /usr/bin/nextflow
 
 RUN yum update -y \
  && yum install -y \
+    which \
     curl \
     hostname \
     java \
